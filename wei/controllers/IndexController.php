@@ -41,9 +41,13 @@ class IndexController extends Controller
                 //此处应做微信公众号是否填写正确以及是否相应的值是否符合要求
 
                 //  echo $wx_name;
-                $data =  Yii::$app->db->createCommand()->batchInsert('wex_account', ['wx_name', 'wx_appid','wx_secret','wx_remark','wx_time'], [
-                    ["$wx_name", "$wx_appid","$wx_secret","$wx_remark","$wx_time"],
-                ])->execute();
+                $article= new\app\models\Account();
+                $article->wx_name   = "$wx_name";
+                $article->wx_appid  = "$wx_appid";
+                $article->wx_secret = "$wx_secret";
+                $article->wx_remark = "$wx_remark";
+                $article->wx_time   = "$wx_time";
+                $data = $article->save();
                 if($data){
                     return $this->redirect("index.php?r=index/index_2");
                 }else{

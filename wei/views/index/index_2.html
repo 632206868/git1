@@ -24,6 +24,9 @@
     <link href="css/style.css?v=2.2.0" rel="stylesheet">
     <script src="jquery/jquery.js"></script>
     <script src="jquery/my.js"></script>
+    <script>
+        var Wxdel = "index.php?r=index/sel";
+    </script>
 
 </head>
 
@@ -195,30 +198,32 @@
         <div class="row  border-bottom white-bg dashboard-header">
             <div class="col-sm-12">
                 <blockquote class="text-warning" style="font-size:14px">
+                <?php if(empty($data)){?>
+                    <div style="margin-left: 400px;"><h2>目前没有添加任何公众号哦</h2></div>
+                <?php }else{?>
 
-                    <form action="index.php?r=index/index_1" method="post">
                         <table border="1" style="margin-left: 280px; margin-bottom: 20px;" >
                             <tr  style="height: 30px">
                                 <div class="form-group">
-                                    <th>ID</th>
-                                    <th>公众号名称</th>
-                                    <th>备注</th>
-                                    <th>上传日期</th>
-                                    <th>操作</th>
+                                    <th style="padding-left: 5px;padding-right: 5px;">ID</th>
+                                    <th style="padding-left: 5px;padding-right: 5px;">公众号名称</th>
+                                    <th style="padding-left: 5px;padding-right: 5px;">备注</th>
+                                    <th style="padding-left: 5px;padding-right: 5px;">上传日期</th>
+                                    <th style="padding-left: 5px;padding-right: 5px;">操作</th>
                                 </div>
                             </tr>
-                            <?php foreach($data as $v){?>
+                            <?php foreach($data as $v):?>
                             <tr  style="height: 30px">
                                 <div class="form-group">
                                         <td>&nbsp; <?= $v['wx_id']?>&nbsp;</td>
                                         <td> &nbsp;<?= $v['wx_name']?>&nbsp;</td>
                                         <td> &nbsp;<?= $v['wx_remark']?>&nbsp;</td>
                                         <td>&nbsp; <?= $v['wx_time']?>&nbsp;</td>
-                                        <td><a href="#">&nbsp;删&nbsp;除&nbsp;</a>&nbsp;||&nbsp;<a href="#">查看详细信息&nbsp;</a></td>
+                                        <td><a href="javascript:;" mid="<?= $v['wx_id']?>" class="del">&nbsp;删&nbsp;除&nbsp;</a>&nbsp;||&nbsp;<a href="javascript:;">查看详细信息&nbsp;</a></td>
                                 </div>
                             </tr>
-                            <?php }?>
 
+                            <?php endforeach ;?>
                         </table>
                         <a style="margin-left: 400px;float: left" href="javascript:;" class="page" mid="1">&nbsp;首页&nbsp;</a>
                         <a href="javascript:;" class="page" mid="<?php echo $up?>">&nbsp;上一页&nbsp;</a>
@@ -226,11 +231,12 @@
                         <a href="javascript:;" class="page" mid="<?php echo $pages?>">&nbsp;末页&nbsp;</a>
 
 
+                    <?php }?>
 
-                    </form>
                     <h4 class="text-danger"></h4>
                 </blockquote>
                 <hr>
+
             </div>
         </div>
     </div>
