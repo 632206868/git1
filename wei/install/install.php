@@ -200,6 +200,7 @@ if($action == 'db') {
             ), $config);
             mysql_select_db($dbname);
             $query = mysql_query("SHOW TABLES LIKE '{$dbprefix}%';");
+
             if (!mysql_fetch_assoc($query)) {
                 die('<script type="text/javascript">alert("数据库创建失败，请重新安装！");history.back();</script>');
             }
