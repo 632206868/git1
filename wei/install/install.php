@@ -5,6 +5,7 @@ error_reporting(0);
 @set_magic_quotes_runtime(0);
 ob_start();
 define('IA_DIR', str_replace("\\",'/', __DIR__.'/../'));
+
 if($_GET['res']) {
     $res = $_GET['res'];
     $reses = tpl_resources();
