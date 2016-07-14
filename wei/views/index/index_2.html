@@ -23,6 +23,7 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css?v=2.2.0" rel="stylesheet">
     <script src="jquery/jquery.js"></script>
+    <script src="jquery/wx_xq.js"></script>
     <script src="jquery/my.js"></script>
     <script>
         var Wxdel = "index.php?r=index/sel";
@@ -219,7 +220,7 @@
                                         <td> &nbsp;<?= $v['wx_name']?>&nbsp;</td>
                                         <td> &nbsp;<?= $v['wx_remark']?>&nbsp;</td>
                                         <td>&nbsp; <?= $v['wx_time']?>&nbsp;</td>
-                                        <td><a href="javascript:;" mid="<?= $v['wx_id']?>" class="del">&nbsp;删&nbsp;除&nbsp;</a>&nbsp;||&nbsp;<a href="javascript:;">查看详细信息&nbsp;</a></td>
+                                        <td><a href="javascript:;" mid="<?= $v['wx_id']?>" class="del">&nbsp;删&nbsp;除&nbsp;</a>&nbsp;||&nbsp;<a href="javascript:;"  mid="<?= $v['wx_id']?>" class="upd" onclick="fun()">查看详细信息&nbsp;</a></td>
                                 </div>
                             </tr>
 
@@ -236,7 +237,8 @@
                     <h4 class="text-danger"></h4>
                 </blockquote>
                 <hr>
-
+         <form action="index.php?r=index/index_4"></form>
+          <div id="hh"></div>
             </div>
         </div>
     </div>
@@ -257,3 +259,9 @@
 </body>
 
 </html>
+<script>
+    function upd() {
+        var obj = $("input");
+        $("p").html("<span onclick=\"fun()\" >" + obj.val() + "</span>");
+    }
+</script>
